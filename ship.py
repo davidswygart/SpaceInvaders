@@ -1,14 +1,21 @@
 import pygame
+from pygame.sprite import Sprite
 
 
-class Ship():
-    def __init__(self, ai_settings, screen):
+class Ship(Sprite):
+    def __init__(self, ai_settings, screen, shiptype):
         """Initialize the ship and set its starting position."""
+        super().__init__()
         self.screen = screen
         self.ai_settings = ai_settings
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load('images/ship.bmp')
+        if shiptype == 1:
+            self.image = pygame.image.load('images/ship1.bmp')
+        elif shiptype == 2:
+            self.image = pygame.image.load('images/ship2.bmp')
+        elif shiptype == 3:
+            self.image = pygame.image.load('images/ship3.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
@@ -16,12 +23,15 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
         
-        # Store a decimal value for rthe ship's center
+        # Store a decimal value for the ship's center
         self.center = float(self.rect.centerx)
         
         #Movement flag
         self.moving_right = False
         self.moving_left = False
+        
+        self.number = shiptype
+        self.active_bullets = 0
         
     def update(self):
         """Update the ship's position base on the movement flag."""

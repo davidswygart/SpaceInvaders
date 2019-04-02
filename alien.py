@@ -20,6 +20,10 @@ class Alien(Sprite):
         
         # Store the alien's exact position.
         self.x = float(self.rect.x)
+        
+        self.individual_direction = 1
+        self.y_movement = 0
+        self.x_movement = 0
       
     def update(self):
         """Move the alien to the right or left."""
@@ -34,10 +38,3 @@ class Alien(Sprite):
             return True
         elif self.rect.left <= 0:
             return True
-        
-        
-        
-        
-    #def blitme(self):
-        """Draw the alien at its current location."""
-   #     self.screen.blit(self.image, self.rect)
