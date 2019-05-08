@@ -17,17 +17,19 @@ class Settings ():
         
         # Alien  settings
         self.fleet_drop_speed = 30
+        self.alien_shoot_threshold = 999
 
         
-        #Ship settings
+        # Ship settings
         self.ship_limit = 3 
-        self.speedup_scale = 1.5
+        self.speedup_scale = 1.2
         
         #Misc Settings
         self.quitflag = 1
         self.score_scale = 1.5
         
         self.initialize_dynamic_settings()
+
         
     def initialize_dynamic_settings(self):
         """Initialize settings that change throughout the game."""
@@ -35,19 +37,17 @@ class Settings ():
         self.bullet_speed_factor = 20
         self.alien_speed_factor = 4
         self.alien_bullet_speed_factor = 20
-        #fleet_direction of 1 represents right: -1 represents left.
+        # fleet_direction of 1 represents right: -1 represents left.
         self.fleet_direction = 1
 
-        self.second_ship_active = 0
         
         # Scoring
         self.alien_points = 2
         
     def increase_speed(self):
         """Increase speed settings."""
-        self.ship_speed_factor *= self.speedup_scale
-        #self.bullet_speed_factor *= self.speedup_scale
         self.alien_speed_factor *= self.speedup_scale
         self.alien_points = int(self.alien_points * self.score_scale)
+        self.alien_shoot_threshold -= 1
 
         

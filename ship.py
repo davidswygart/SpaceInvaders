@@ -31,6 +31,7 @@ class Ship(Sprite):
         self.moving_left = False
         
         self.number = shiptype
+        self.active = True
         self.active_bullets = 0
         
     def update(self):
