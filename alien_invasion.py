@@ -21,8 +21,10 @@ def run_game(screenmode = 0):
         screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         ai_settings.screen_width = screen.get_rect().width
         ai_settings.screen_height = screen.get_rect().height
+        print(screenmode)
     else:
         screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
+        print('windowed mode')
 
     pygame.display.set_caption("Alien Invasion - Press p to exit")
 
@@ -65,4 +67,4 @@ def run_game(screenmode = 0):
     pygame.quit()
     exit()
 
-run_game(1)  
+run_game(0)  
